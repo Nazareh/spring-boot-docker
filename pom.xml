@@ -61,11 +61,15 @@
 			<plugin>
 				<groupId>io.fabric8</groupId>
 				<artifactId>docker-maven-plugin</artifactId>
-				<version>LATEST</version>
+				<version>0.23.0</version>
 
 				<configuration>
 
-					<dockerHost>https://localhost:2376</dockerHost>
+					<dockerHost>
+						<!--http://localhost:2375-->
+						npipe:////./pipe/docker_engine
+					</dockerHost>
+
 					<verbose>true</verbose>
 					<images>
 						<image>
@@ -84,10 +88,13 @@
 							</build>
 						</image>
 					</images>
+					<authConfig>
+						<username>jolokia</username>
+						<password>s!cr!t</password>
+					</authConfig>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-	
 
 </project>
