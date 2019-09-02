@@ -70,11 +70,6 @@
                 <version>0.23.0</version>
 
 				<configuration>
-					<authConfig>
-						<username>nazarehturmina</username>
-						<password>Pitanga@1</password>
-					</authConfig>
-					<!--http://localhost:2375-->
 					<dockerHost>http://localhost:2375</dockerHost>
                     <verbose>true</verbose>
 					<images>
