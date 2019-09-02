@@ -5,7 +5,7 @@
 
 	<groupId>guru.springframework</groupId>
 	<artifactId>spring-boot-docker</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>spring-boot-docker</name>
@@ -75,10 +75,11 @@
 						<password>Pitanga@1</password>
 					</authConfig>
 					<!--http://localhost:2375-->
-					<dockerHost> npipe:////./pipe/docker_engine</dockerHost>
+					<dockerHost>http://localhost:2375</dockerHost>
                     <verbose>true</verbose>
 					<images>
-						<image><!--project container-->
+						<!--project container-->
+						<image>
 							<name>${docker.image.prefix}/${docker.image.name}</name>
 							<build>
 								<dockerFileDir>${project.basedir}/target/dockerfile/</dockerFileDir>
@@ -110,7 +111,7 @@
 						</image>
 						<!--mysql container-->
 						<image>
-							<name>mysql</name>
+							<name>mysql:5.7</name>
 							<alias>mysqldb</alias>
 							<run>
 								<!--expose port for dn-->
@@ -134,8 +135,8 @@
 							<alias>myrabbitmq</alias>
 							<run>
 								<ports>
-									<port>5671</port>
-									<port>5672</port>
+									<port>5671:5671</port>
+									<port>5672:5672</port>
 									<port>4369</port>
 									<port>25672</port>
 								</ports>
@@ -167,7 +168,7 @@
                                 </env>
                                 <dependsOn>
                                     <container>myrabbitmq</container>
-                                    <container>mysql</container>
+                                    <container>mysqldb</container>
                                 </dependsOn>
                                 <wait>
                                     <http>
