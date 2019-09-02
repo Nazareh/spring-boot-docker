@@ -135,8 +135,8 @@
 							<alias>myrabbitmq</alias>
 							<run>
 								<ports>
-									<port>5671:5671</port>
-									<port>5672:5672</port>
+									<port>5671</port>
+									<port>5672</port>
 									<port>4369</port>
 									<port>25672</port>
 								</ports>
